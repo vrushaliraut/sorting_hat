@@ -15,7 +15,6 @@ public class BoardingHouse {
     ArrayList<Integer> boardingHouseAWithNonVeg;
     ArrayList<Integer> boardingHouseBWithVeg;
     ArrayList<Integer> boardingHouseBWithNonVeg;
-    private String studeClassA;
 
     public BoardingHouse(int capacity) {
         this.capacity = capacity;
@@ -41,6 +40,14 @@ public class BoardingHouse {
 
         if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())){
             boardingHouseAWithNonVeg.add(student.getRegNumber());
+        }
+
+        if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())){
+            boardingHouseBWithVeg.add(student.getRegNumber());
+        }
+
+        if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())){
+            boardingHouseBWithNonVeg.add(student.getRegNumber());
         }
     }
 }
