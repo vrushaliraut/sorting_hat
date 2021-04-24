@@ -29,4 +29,17 @@ class BoardingHouseTest {
 
         assertEquals(1, boardingHouse.boardingHouseAWithVeg.size());
     }
+
+    @Test
+    void testShouldRegisteredTwoStudentsWithClassAVegAndNonvegPreference() {
+        BoardingHouse boardingHouse = new BoardingHouse(25);
+        boardingHouse.createBoardingHouses();
+        Student student = new Student(0001, "A", "V");
+        Student anotherStudent = new Student(0002, "A", "NV");
+        boardingHouse.assignedBoardingHouse(student);
+        boardingHouse.assignedBoardingHouse(anotherStudent);
+
+        assertEquals(1, boardingHouse.boardingHouseAWithVeg.size());
+        assertEquals(1, boardingHouse.boardingHouseAWithNonVeg.size());
+    }
 }

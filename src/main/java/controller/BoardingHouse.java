@@ -38,5 +38,9 @@ public class BoardingHouse {
         if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())){
             boardingHouseAWithVeg.add(student.getRegNumber());
         }
+
+        if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())){
+            boardingHouseAWithNonVeg.add(student.getRegNumber());
+        }
     }
 }
