@@ -17,7 +17,12 @@ class BoardingHouseTest {
     @Test
     void testShouldCreateBoardingHousesWithClassAndFoodPreference() {
         BoardingHouse boardingHouse = new BoardingHouse(25);
-        assertTrue(boardingHouse.createBoardingHouses());
+        boardingHouse.createBoardingHouses();
+
+        assertEquals(0,boardingHouse.boardingHouseAWithVeg.size());
+        assertEquals(0,boardingHouse.boardingHouseAWithNonVeg.size());
+        assertEquals(0,boardingHouse.boardingHouseBWithVeg.size());
+        assertEquals(0,boardingHouse.boardingHouseBWithNonVeg.size());
     }
 
     @Test

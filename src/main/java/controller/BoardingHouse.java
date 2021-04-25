@@ -24,41 +24,37 @@ public class BoardingHouse {
         return capacity;
     }
 
-    public boolean createBoardingHouses() {
+    public void createBoardingHouses() {
         boardingHouseAWithVeg = new ArrayList<>(capacity);
         boardingHouseAWithNonVeg = new ArrayList<>(capacity);
         boardingHouseBWithVeg = new ArrayList<>(capacity);
         boardingHouseBWithNonVeg = new ArrayList<>(capacity);
-        return true;
     }
 
     public boolean isRegNumberUnique(int regNumber) {
-        if (boardingHouseAWithVeg.contains(regNumber) || boardingHouseAWithNonVeg.contains(regNumber) ||
-                boardingHouseBWithVeg.contains(regNumber) || boardingHouseBWithNonVeg.contains(regNumber)) {
-            return false;
-        }
-        return true;
+        return !boardingHouseAWithVeg.contains(regNumber) && !boardingHouseAWithNonVeg.contains(regNumber) &&
+                !boardingHouseBWithVeg.contains(regNumber) && !boardingHouseBWithNonVeg.contains(regNumber);
     }
 
     public void assignedBoardingHouse(Student student) {
-
         if (isRegNumberUnique(student.getRegNumber())) {
-            if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())) {
-                boardingHouseAWithVeg.add(student.getRegNumber());
+            if (CLASS_A.equals(student.getStudClass())) {
+                if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
+                    boardingHouseAWithVeg.add(student.getRegNumber());
+                } else {
+                    boardingHouseAWithNonVeg.add(student.getRegNumber());
+                }
+            } else if (CLASS_B.equals(student.getStudClass())) {
+                if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
+                    boardingHouseBWithVeg.add(student.getRegNumber());
+                } else {
+                    boardingHouseBWithNonVeg.add(student.getRegNumber());
+                }
+            } else {
+                System.out.println("Student class does not match");
             }
-
-            if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())) {
-                boardingHouseAWithNonVeg.add(student.getRegNumber());
-            }
-
-            if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())) {
-                boardingHouseBWithVeg.add(student.getRegNumber());
-            }
-
-            if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())) {
-                boardingHouseBWithNonVeg.add(student.getRegNumber());
-            }
+        } else {
+            System.out.println("Student registration number is not unique");
         }
-
     }
 }
