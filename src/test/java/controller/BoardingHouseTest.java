@@ -48,11 +48,24 @@ class BoardingHouseTest {
         BoardingHouse boardingHouse = new BoardingHouse(25);
         boardingHouse.createBoardingHouses();
         Student student = new Student(0001, "B", "V");
-        Student anotherStudent = new Student(0001, "B", "NV");
+        Student anotherStudent = new Student(0002, "B", "NV");
         boardingHouse.assignedBoardingHouse(student);
         boardingHouse.assignedBoardingHouse(anotherStudent);
 
         assertEquals(1, boardingHouse.boardingHouseBWithVeg.size());
         assertEquals(1, boardingHouse.boardingHouseBWithNonVeg.size());
+    }
+
+    @Test
+    void testShouldNotRegisteredStudentForDuplicateEntry() {
+        BoardingHouse boardingHouse = new BoardingHouse(25);
+        boardingHouse.createBoardingHouses();
+        Student student = new Student(0001, "B", "V");
+        Student anotherStudent = new Student(0001, "B", "NV");
+        boardingHouse.assignedBoardingHouse(student);
+        boardingHouse.assignedBoardingHouse(anotherStudent);
+
+        assertEquals(1, boardingHouse.boardingHouseBWithVeg.size());
+        assertEquals(0, boardingHouse.boardingHouseBWithNonVeg.size());
     }
 }

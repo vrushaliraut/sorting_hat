@@ -32,22 +32,33 @@ public class BoardingHouse {
         return true;
     }
 
+    public boolean isRegNumberUnique(int regNumber) {
+        if (boardingHouseAWithVeg.contains(regNumber) || boardingHouseAWithNonVeg.contains(regNumber) ||
+                boardingHouseBWithVeg.contains(regNumber) || boardingHouseBWithNonVeg.contains(regNumber)) {
+            return false;
+        }
+        return true;
+    }
+
     public void assignedBoardingHouse(Student student) {
 
-        if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())){
-            boardingHouseAWithVeg.add(student.getRegNumber());
+        if (isRegNumberUnique(student.getRegNumber())) {
+            if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())) {
+                boardingHouseAWithVeg.add(student.getRegNumber());
+            }
+
+            if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())) {
+                boardingHouseAWithNonVeg.add(student.getRegNumber());
+            }
+
+            if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())) {
+                boardingHouseBWithVeg.add(student.getRegNumber());
+            }
+
+            if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())) {
+                boardingHouseBWithNonVeg.add(student.getRegNumber());
+            }
         }
 
-        if (CLASS_A.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())){
-            boardingHouseAWithNonVeg.add(student.getRegNumber());
-        }
-
-        if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_VEG.equals(student.getFoodPreference())){
-            boardingHouseBWithVeg.add(student.getRegNumber());
-        }
-
-        if (CLASS_B.equals(student.getStudClass()) && FOOD_PREFERENCE_NON_VEG.equals(student.getFoodPreference())){
-            boardingHouseBWithNonVeg.add(student.getRegNumber());
-        }
     }
 }
