@@ -92,6 +92,21 @@ class BoardingHouseTest {
                 " BNV :[10, 11, 12]",registeredStudents);
     }
 
+    @Test
+    void shouldNotAssignStudentsToBoardingHouseAsCapacityIsNotMatchingWithRequest() {
+        BoardingHouse boardingHouse = new BoardingHouse(3);
+        boardingHouse.createBoardingHouses();
+        ArrayList<Student> students = addSampleCollection();
+        students.add(new Student(13, "A", "V"));
+        boardingHouse.assignedBoardingHouse(students);
+
+        assertEquals(0, boardingHouse.boardingHouseAWithVeg.size());
+        assertEquals(0, boardingHouse.boardingHouseAWithNonVeg.size());
+        assertEquals(0, boardingHouse.boardingHouseBWithVeg.size());
+        assertEquals(0, boardingHouse.boardingHouseBWithNonVeg.size());
+
+    }
+
     private ArrayList<Student> addSampleCollection() {
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(1, "A", "V"));
