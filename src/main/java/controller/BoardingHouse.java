@@ -3,13 +3,15 @@ package controller;
 import model.Student;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class BoardingHouse {
 
     private final String CLASS_A = "A";
     private final String CLASS_B = "B";
     private final String FOOD_PREFERENCE_VEG = "V";
-    private final String FOOD_PREFERENCE_NON_VEG = "NV";
     private int capacity;
     ArrayList<Integer> boardingHouseAWithVeg;
     ArrayList<Integer> boardingHouseAWithNonVeg;
@@ -36,25 +38,35 @@ public class BoardingHouse {
                 !boardingHouseBWithVeg.contains(regNumber) && !boardingHouseBWithNonVeg.contains(regNumber);
     }
 
-    public void assignedBoardingHouse(Student student) {
-        if (isRegNumberUnique(student.getRegNumber())) {
-            if (CLASS_A.equals(student.getStudClass())) {
-                if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
-                    boardingHouseAWithVeg.add(student.getRegNumber());
+    public void assignedBoardingHouse(ArrayList<Student> studentList) {
+        for (Student student : studentList) {
+            if (isRegNumberUnique(student.getRegNumber())) {
+                if (CLASS_A.equals(student.getStudClass())) {
+                    if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
+                        boardingHouseAWithVeg.add(student.getRegNumber());
+                    } else {
+                        boardingHouseAWithNonVeg.add(student.getRegNumber());
+                    }
+                } else if (CLASS_B.equals(student.getStudClass())) {
+                    if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
+                        boardingHouseBWithVeg.add(student.getRegNumber());
+                    } else {
+                        boardingHouseBWithNonVeg.add(student.getRegNumber());
+                    }
                 } else {
-                    boardingHouseAWithNonVeg.add(student.getRegNumber());
-                }
-            } else if (CLASS_B.equals(student.getStudClass())) {
-                if (student.getFoodPreference().equals(FOOD_PREFERENCE_VEG)) {
-                    boardingHouseBWithVeg.add(student.getRegNumber());
-                } else {
-                    boardingHouseBWithNonVeg.add(student.getRegNumber());
+                    System.out.println("Student class does not match");
                 }
             } else {
-                System.out.println("Student class does not match");
+                System.out.println("Student registration number is not unique");
             }
-        } else {
-            System.out.println("Student registration number is not unique");
         }
+    }
+
+    public String registeredStudents() {
+        String finalOutput = "Final Output ::\n AV : "+Arrays.toString(boardingHouseAWithVeg.toArray()) +"\n ANV : "+
+                Arrays.toString(boardingHouseAWithNonVeg.toArray()) + "\n BV : "+
+                Arrays.toString(boardingHouseBWithVeg.toArray()) + "\n BNV :"+
+                Arrays.toString(boardingHouseBWithNonVeg.toArray());
+        return finalOutput;
     }
 }
