@@ -19,8 +19,31 @@ There are 2 ways to registered students to boarding house
 
 **For file input:**
 
-**For input from terminal:**
+- Add file name in Configuration --> Use Edit Configuration and add file name -->
+  "./bin/sorting_hat_input_file.txt"
 
+- Run your project you can see the output for operation command specified in file.
+
+ScreenShot Of File output for reference  :- 
+
+![example output for file](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/file_output.png)
+
+**For input from terminal:**
+Note :- 
+If you earlier have registered students using file, please remove path from config file and then try from terminal.
+
+- Use command to create boarding house with equal capacity, 
+  give total number of student capacity which can be equal for each boarding house 
+  :- init 12
+  (12 is total number so 12/4 = 3 student capacity for each boarding house)
+
+- Use command to registered students  :- reg 1 B V
+
+- use command to exit and see output :- fin
+
+ScreenShot Of Terminal output for reference :- 
+
+![example output for terminal](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/terminal_output.png)
 
 ### Author
   Vrushali

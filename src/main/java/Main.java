@@ -17,6 +17,7 @@ public class Main {
     private static final String INVALID_BOARDING_HOUSE_CAPACITY = "Invalid Boarding house capacity";
     private static final String BOARDING_HOUSE_HAS_TO_BE_DEFINED_FIRST = "Boarding house has to be created first before any" +
             " operation \nRun init <Capacity>";
+    private static final String ENTER_INPUT = "Enter Input";
 
     private static Map<String, SortingHatCommand> sortingHatCommandMap = new HashMap<>();
 
@@ -30,7 +31,15 @@ public class Main {
                 e.printStackTrace();
             }
 
+        } else {
+            System.out.println(ENTER_INPUT);
+            Scanner scanner = readFromTerminal();
+            parseInputFromFile(scanner);
         }
+    }
+
+    private static Scanner readFromTerminal() {
+        return new Scanner(System.in);
     }
 
     private static void populateCommandMap() {
@@ -51,7 +60,7 @@ public class Main {
                     new ExitCommand().execute(line, boardingHouse);
                 } else if (boardingHouse == null && inputArray[0].equals(CREATE_BOARDING_HOUSE)) {
                     boardingHouse = createBoardingHouse(line, boardingHouse);
-                    if (boardingHouse == null){
+                    if (boardingHouse == null) {
                         System.out.println(INVALID_BOARDING_HOUSE_CAPACITY);
                         return;
                     }
