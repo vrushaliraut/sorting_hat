@@ -11,14 +11,13 @@ class BoardingHouseTest {
 
     @Test
     void testShouldDefinedBoardingHouseWithSameCapacity() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        assertEquals(25, boardingHouse.getCapacity());
+        BoardingHouse boardingHouse = new BoardingHouse(8);
+        assertEquals(8, boardingHouse.getCapacity());
     }
 
     @Test
     void testShouldCreateBoardingHousesWithClassAndFoodPreference() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(8);
 
         assertEquals(0, boardingHouse.boardingHouseAWithVeg.size());
         assertEquals(0, boardingHouse.boardingHouseAWithNonVeg.size());
@@ -28,8 +27,7 @@ class BoardingHouseTest {
 
     @Test
     void testShouldRegisteredStudentWithClassAVegPreference() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(8);
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(0001, "A", "V"));
         boardingHouse.assignedBoardingHouse(list);
@@ -39,8 +37,7 @@ class BoardingHouseTest {
 
     @Test
     void testShouldRegisteredTwoStudentsWithClassAVegAndNonvegPreference() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(8);
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(0001, "A", "V"));
         list.add(new Student(0002, "A", "NV"));
@@ -52,8 +49,7 @@ class BoardingHouseTest {
 
     @Test
     void testShouldRegisteredTwoStudentsWithClassBVegAndNonvegPreference() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(8);
 
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(0001, "B", "V"));
@@ -66,8 +62,7 @@ class BoardingHouseTest {
 
     @Test
     void testShouldNotRegisteredStudentForDuplicateEntry() {
-        BoardingHouse boardingHouse = new BoardingHouse(25);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(8);
         ArrayList<Student> list = new ArrayList<>();
         list.add(new Student(0001, "B", "V"));
         list.add(new Student(0001, "B", "NV"));
@@ -79,32 +74,16 @@ class BoardingHouseTest {
 
     @Test
     void testShouldReturnFinalOutputWithDifferentBoardingHousesStudents() {
-        BoardingHouse boardingHouse = new BoardingHouse(11);
-        boardingHouse.createBoardingHouses();
+        BoardingHouse boardingHouse = new BoardingHouse(12);
         ArrayList<Student> students = addSampleCollection();
         boardingHouse.assignedBoardingHouse(students);
 
-        String registeredStudents = boardingHouse.registeredStudents();
+        String registeredStudents = boardingHouse.getRegisteredStudents();
         assertEquals("Final Output ::\n" +
                 " AV : [1, 2, 3]\n" +
                 " ANV : [4, 5, 6]\n" +
                 " BV : [7, 8, 9]\n" +
-                " BNV :[10, 11, 12]",registeredStudents);
-    }
-
-    @Test
-    void shouldNotAssignStudentsToBoardingHouseAsCapacityIsNotMatchingWithRequest() {
-        BoardingHouse boardingHouse = new BoardingHouse(3);
-        boardingHouse.createBoardingHouses();
-        ArrayList<Student> students = addSampleCollection();
-        students.add(new Student(13, "A", "V"));
-        boardingHouse.assignedBoardingHouse(students);
-
-        assertEquals(0, boardingHouse.boardingHouseAWithVeg.size());
-        assertEquals(0, boardingHouse.boardingHouseAWithNonVeg.size());
-        assertEquals(0, boardingHouse.boardingHouseBWithVeg.size());
-        assertEquals(0, boardingHouse.boardingHouseBWithNonVeg.size());
-
+                " BNV :[10, 11, 12]", registeredStudents);
     }
 
     private ArrayList<Student> addSampleCollection() {

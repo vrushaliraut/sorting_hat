@@ -15,5 +15,12 @@ ignored
 
 # How to use
 
+There are 2 ways to registered students to boarding house 
+
+**For file input:**
+
+**For input from terminal:**
+
+
 ### Author
   Vrushali
