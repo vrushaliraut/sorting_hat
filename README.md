@@ -26,7 +26,7 @@ There are 2 ways to registered students to boarding house
 
 ScreenShot Of File output for reference  :- 
 
-![example output for file](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/file_output.png)
+![example output for file](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/file_input.png)
 
 **For input from terminal:**
 Note :- 
@@ -43,7 +43,7 @@ If you earlier have registered students using file, please remove path from conf
 
 ScreenShot Of Terminal output for reference :- 
 
-![example output for terminal](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/terminal_output.png)
+![example output for terminal](/Users/vrushali/Backend/javaprojects/sorting_hat/src/main/resources/SampleOutput/terminal_input.png)
 
 ### Author
   Vrushali

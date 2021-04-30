@@ -2,7 +2,6 @@ package controller;
 
 import model.Student;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class RegisteredStudent implements SortingHatCommand {
@@ -17,14 +16,11 @@ public class RegisteredStudent implements SortingHatCommand {
         if (!checkValidity(arr)) {
             throw new InputMismatchException(INVALID_INPUT);
         }
-        ArrayList<Student> students = getStudentArrayList(arr);
-        boardingHouse.assignedBoardingHouse(students);
+        boardingHouse.assignedBoardingHouse(getStudent(arr));
     }
 
-    private ArrayList<Student> getStudentArrayList(String[] arr) {
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(new Student(Integer.parseInt(arr[1]), arr[2], arr[3]));
-        return students;
+    private Student getStudent(String[] arr) {
+        return new Student(Integer.parseInt(arr[1]), arr[2], arr[3]);
     }
 
     @Override
